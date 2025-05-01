@@ -6,22 +6,13 @@ public class Application
 	{
 		
 		
-		
-		 String s = "Welcome to IBM";
-	        System.out.println(s); // prints "Welcome to IBM"
+		 // Declare and initialize an array of integers
+        int[] numbers = {1, 2, 3, 4, 5};
 
-	        // try to modify the String
-	        s = s + "!";
-	        System.out.println(s); // prints "Welcome to IBM!"
+        // Print the array using an enhanced for loop
+        for (int number : numbers) {
+            System.out.println(number);}
 
-	        // assign the String to a new variable
-	        String s2 = s;
-	        System.out.println(s2); // prints "Welcome to IBM!"
-
-	        // try to modify the String through the new variable
-	        s2 = s2 + " We are excited to have you!";
-	        System.out.println(s); // still prints "Welcome to IBM!"
-	        System.out.println(s2); // prints "Welcome to IBM! We are excited to have you!"
 		    
 		
 
