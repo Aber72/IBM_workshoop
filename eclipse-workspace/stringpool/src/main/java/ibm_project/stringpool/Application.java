@@ -6,12 +6,19 @@ public class Application
 	{
 		
 		
-		 // Declare and initialize an array of integers
-        int[] numbers = {1, 2, 3, 4, 5};
+		// Declare and initialize a 2D array of integers
+        int[][] numbers = {
+            {1, 2, 3},
+            {4, 5, 6},
+            {7, 8, 9}
+        };
 
-        // Print the array using an enhanced for loop
-        for (int number : numbers) {
-            System.out.println(number);}
+        // Print the 2D array using an enhanced for loop
+        for (int[] row : numbers) {
+            for (int number : row) {
+                System.out.print(number + " ");
+            }
+            System.out.println();}
 
 		    
 		
