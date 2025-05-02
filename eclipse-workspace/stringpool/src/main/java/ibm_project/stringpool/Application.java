@@ -3,7 +3,7 @@ class IllegalAgeException extends Exception{
 	@Override
 	public String getMessage() {
 		// TODO Auto-generated method stub
-		return super.getMessage();
+		return "your age is not 18";
 	}
 	}
 	
