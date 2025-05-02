@@ -1,46 +1,36 @@
 package ibm_project.stringpool;
+class IllegalAgeException extends Exception{
+	@Override
+	public String getMessage() {
+		// TODO Auto-generated method stub
+		return super.getMessage();
+	}
+	}
+	
+class ElectionVoting{
+	public void register(int age)throws IllegalAgeException{
+		if(age<18) {
+			throw new IllegalAgeException();
+		}
+	}
+}
 
 public class Application
 {
 	public static void main( String[] args )
 	{
-		
-		System.out.println("start");
-		
-		
+		ElectionVoting electionVoting = new ElectionVoting();
 		
 		try {
-			String st = args[0];
-			String st1 = args[1];
-			try {
-				System.out.println(Integer.parseInt(st)/Integer.parseInt(st1));
-			}
-			
-			catch(NumberFormatException ex) {
-				System.out.println("nested catch");
-				
-			}
-			finally {
-				System.out.println("its finally block");
-			}
-			System.out.println("end of inner try");
+			electionVoting.register(17);
 			
 		}
-		catch(ArrayIndexOutOfBoundsException  |NumberFormatException ex){
-			System.out.println("make sure u r providing correct numbers");
-			
-		}
-		catch(ArithmeticException ex) {
-			System.out.println("number cannot divide by zero");
-		}
-		
-		catch(Exception ex){
-			System.out.println("unknown error");
+		catch(IllegalAgeException ex) {
 			ex.printStackTrace();
 			
 		}
+		System.out.println("end");
 	
-
 		    
 		
 
