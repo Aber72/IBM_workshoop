@@ -1,7 +1,13 @@
 package ibm_project.stringpool;
 
 	
-import math.*;
+class Runner implements Runnable{
+	public void run() {
+		for(int i=0;i<10;i++) {
+			System.out.println(Thread.currentThread()+-->+String.valueOf(c));
+		}
+	}
+}
 
 public class Application
 {
@@ -10,12 +16,17 @@ public class Application
 	
 	{
 		
-			System.out.println("start");
-			Arithamtic arithamtic = new Arithamtic();
-			assert(arithamtic.sum(4,3)==7):"this is sum method";
-			System.out.println("end");
-		
-		
+			Runner runner = new Runner();
+			Thread thread1 = new Thread();
+			System.out.println(thread1.getState());
+			thread1.start();
+			System.out.println(thread1.getState());
+			try {
+				Thread.sleep(100);
+			}catch(InterruptedException e) {
+				e.printStackTrace();
+			}
+		System.out.println(thread1.getState());
 	
 		    
 		
