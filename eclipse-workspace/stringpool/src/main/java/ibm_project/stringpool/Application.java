@@ -6,64 +6,48 @@ package ibm_project.stringpool;
 public class Application
 {
 	public static void main( String[] args ) {
+		
+		// 1. Boxing (Manual Wrapping) - Converting primitive to Wrapper object
+        int primitiveValue = 10; 
+        Integer boxedValue = Integer.valueOf(primitiveValue); 
+        System.out.println("Boxing:");
+        System.out.println("Primitive value: " + primitiveValue);
+        System.out.println("Boxed value (Integer object): " + boxedValue);
+
+       
+        Integer wrapperValue = new Integer(20);
+        int unboxedValue = wrapperValue.intValue(); 
+        System.out.println("\nUnboxing:");
+        System.out.println("Wrapper value (Integer object): " + wrapperValue);
+        System.out.println("Unboxed value (primitive int): " + unboxedValue);
+
+        // 3. Autoboxing - Automatic conversion of primitive to Wrapper object
+        int autoPrimitive = 30; 
+        Integer autoBoxedValue = autoPrimitive; 
+        System.out.println("\nAutoboxing:");
+        System.out.println("Primitive value: " + autoPrimitive);
+        System.out.println("Auto-boxed value (Integer object): " + autoBoxedValue);
+
+        // 4. Auto-unboxing - Automatic conversion of Wrapper object to primitive
+        Integer autoWrapperValue = 40;
+        int autoUnboxedValue = autoWrapperValue; 
+        System.out.println("\nAuto-unboxing:");
+        System.out.println("Wrapper value (Integer object): " + autoWrapperValue);
+        System.out.println("Auto-unboxed value (primitive int): " + autoUnboxedValue);
+
+        // 5. Using Autoboxing/Auto-unboxing in operations
+        Integer num1 = 50; 
+        Integer num2 = 60; 
+        int sum = num1 + num2; 
+        System.out.println("\nUsing Autoboxing and Auto-unboxing in operations:");
+        System.out.println("num1 (Integer object): " + num1);
+        System.out.println("num2 (Integer object): " + num2);
+        System.out.println("Sum (primitive int): " + sum);
+
 	
 	
 		
-        int intValue = 42;
-        double doubleValue = intValue;
-        System.out.println("Widening Casting:");
-        System.out.println("int value: " + intValue);
-        System.out.println("double value: " + doubleValue);
-
-        
-        double originalDouble = 42.99;
-        int narrowedInt = (int) originalDouble; 
-        System.out.println("\nNarrowing Casting:");
-        System.out.println("Original double value: " + originalDouble);
-        System.out.println("Narrowed int value: " + narrowedInt);
-
-       
-        System.out.println("\n=== Reference Typecasting ===");
-
-      
-        Animal animal = new Dog(); 
-        animal.makeSound();
-
-      
-        if (animal instanceof Dog) { 
-            Dog dog = (Dog) animal; 
-            dog.bark(); 
-        }
-
-       
-        System.out.println("\nInvalid Downcasting Example:");
-        Animal genericAnimal = new Animal();
-        if (genericAnimal instanceof Dog) {
-            Dog wrongDog = (Dog) genericAnimal; 
-            wrongDog.bark();
-        } else {
-            System.out.println("Downcasting failed: genericAnimal is not a Dog.");
-        }
-    }
-}
-
-
-class Animal {
-    public void makeSound() {
-        System.out.println("The animal makes a sound.");
-    }
-}
-
-
-class Dog extends Animal {
-    @Override
-    public void makeSound() {
-        System.out.println("The dog says: Woof!");
-    }
-
-    public void bark() {
-        System.out.println("The dog barks!");
-    }
+	}
 
 	
 }
