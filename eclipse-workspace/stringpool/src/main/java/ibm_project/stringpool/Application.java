@@ -1,42 +1,48 @@
 
-
 package ibm_project.stringpool;
 
 public class Application {
-    // Static variables
-    static int counter;
-    static String message;
+  
+    static int staticCounter;
 
-    // Static initializer block
+    
+    int instanceCounter;
+
+   
     static {
-        System.out.println("Static initializer block is executed.");
-        counter = 100; 
-        message = "Welcome to IBM Project String Pool!";
+        System.out.println("Static block executed.");
+        staticCounter = 100; 
     }
 
-    // Static method
-    public static void displayStaticValues() {
-        System.out.println("Counter: " + counter);
-        System.out.println("Message: " + message);
+    {
+        System.out.println("Instance initializer block executed.");
+        instanceCounter = 10; 
     }
 
-    // Constructor
+   
     public Application() {
-        System.out.println("Constructor is executed.");
+        System.out.println("Constructor executed.");
+        instanceCounter += 5;
     }
 
     public static void main(String[] args) {
-        System.out.println("Main method is executed.");
+        System.out.println("Main method executed.");
+        
+       
+        System.out.println("Static Counter: " + staticCounter);
 
-        // Access static variables and methods
-        Application.displayStaticValues();
+       
+        System.out.println("\nCreating first object:");
+        Application app1 = new Application();
+        System.out.println("Instance Counter (app1): " + app1.instanceCounter);
 
-        // Create an instance of Application
-        Application app = new Application();
+      
+        System.out.println("\nCreating second object:");
+        Application app2 = new Application();
+        System.out.println("Instance Counter (app2): " + app2.instanceCounter);
 
-        // Modify static variable
-        counter += 10;
-        System.out.println("Counter after modification: " + counter);
+        
+        staticCounter += 50;
+        System.out.println("\nModified Static Counter: " + staticCounter);
     }
 }
-
