@@ -1,53 +1,42 @@
+
 package ibm_project.stringpool;
 
-	
+class Data {
+   
+    static public int value;
+    
+    
+    public static Data value2;
 
+    // Non-static method
+    public int setValue(int newValue) {
+        value = newValue; 
+        return value;
+    }
+}
 
-public class Application
-{
-	public static void main( String[] args ) {
-		
-		// 1. Boxing (Manual Wrapping) - Converting primitive to Wrapper object
-        int primitiveValue = 10; 
-        Integer boxedValue = Integer.valueOf(primitiveValue); 
-        System.out.println("Boxing:");
-        System.out.println("Primitive value: " + primitiveValue);
-        System.out.println("Boxed value (Integer object): " + boxedValue);
+public class Application {
+    int count = 100; 
+
+    public static void main(String[] args) {
+      
+        Data.value = 42; 
+        System.out.println("Static value (accessed via class): " + Data.value);
 
        
-        Integer wrapperValue = new Integer(20);
-        int unboxedValue = wrapperValue.intValue(); 
-        System.out.println("\nUnboxing:");
-        System.out.println("Wrapper value (Integer object): " + wrapperValue);
-        System.out.println("Unboxed value (primitive int): " + unboxedValue);
+        Data.value2 = new Data();
+        System.out.println("Static reference (value2) points to an object: " + Data.value2);
 
-        // 3. Autoboxing - Automatic conversion of primitive to Wrapper object
-        int autoPrimitive = 30; 
-        Integer autoBoxedValue = autoPrimitive; 
-        System.out.println("\nAutoboxing:");
-        System.out.println("Primitive value: " + autoPrimitive);
-        System.out.println("Auto-boxed value (Integer object): " + autoBoxedValue);
+ 
+        Data.value2.setValue(99);
+        System.out.println("Static value after modification: " + Data.value);
 
-        // 4. Auto-unboxing - Automatic conversion of Wrapper object to primitive
-        Integer autoWrapperValue = 40;
-        int autoUnboxedValue = autoWrapperValue; 
-        System.out.println("\nAuto-unboxing:");
-        System.out.println("Wrapper value (Integer object): " + autoWrapperValue);
-        System.out.println("Auto-unboxed value (primitive int): " + autoUnboxedValue);
+        
+        Data anotherData = new Data(); 
+        anotherData.setValue(123);
+        System.out.println("Static value after modification via another instance: " + Data.value);
 
-        // 5. Using Autoboxing/Auto-unboxing in operations
-        Integer num1 = 50; 
-        Integer num2 = 60; 
-        int sum = num1 + num2; 
-        System.out.println("\nUsing Autoboxing and Auto-unboxing in operations:");
-        System.out.println("num1 (Integer object): " + num1);
-        System.out.println("num2 (Integer object): " + num2);
-        System.out.println("Sum (primitive int): " + sum);
-
-	
-	
-		
-	}
-
-	
+     
+        System.out.println("Accessing static value via class name again: " + Data.value);
+    }
 }
