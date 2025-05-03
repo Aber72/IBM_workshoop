@@ -1,42 +1,42 @@
 
+
 package ibm_project.stringpool;
 
-class Data {
-   
-    static public int value;
-    
-    
-    public static Data value2;
-
-    // Non-static method
-    public int setValue(int newValue) {
-        value = newValue; 
-        return value;
-    }
-}
-
 public class Application {
-    int count = 100; 
+    // Static variables
+    static int counter;
+    static String message;
+
+    // Static initializer block
+    static {
+        System.out.println("Static initializer block is executed.");
+        counter = 100; 
+        message = "Welcome to IBM Project String Pool!";
+    }
+
+    // Static method
+    public static void displayStaticValues() {
+        System.out.println("Counter: " + counter);
+        System.out.println("Message: " + message);
+    }
+
+    // Constructor
+    public Application() {
+        System.out.println("Constructor is executed.");
+    }
 
     public static void main(String[] args) {
-      
-        Data.value = 42; 
-        System.out.println("Static value (accessed via class): " + Data.value);
+        System.out.println("Main method is executed.");
 
-       
-        Data.value2 = new Data();
-        System.out.println("Static reference (value2) points to an object: " + Data.value2);
+        // Access static variables and methods
+        Application.displayStaticValues();
 
- 
-        Data.value2.setValue(99);
-        System.out.println("Static value after modification: " + Data.value);
+        // Create an instance of Application
+        Application app = new Application();
 
-        
-        Data anotherData = new Data(); 
-        anotherData.setValue(123);
-        System.out.println("Static value after modification via another instance: " + Data.value);
-
-     
-        System.out.println("Accessing static value via class name again: " + Data.value);
+        // Modify static variable
+        counter += 10;
+        System.out.println("Counter after modification: " + counter);
     }
 }
+
