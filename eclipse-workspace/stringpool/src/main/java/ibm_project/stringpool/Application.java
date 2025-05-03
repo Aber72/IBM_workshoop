@@ -2,6 +2,34 @@
 package ibm_project.stringpool;
 
 public class Application {
+	
+	 static int outerStaticValue = 100;
+	 
+	 class InnerClass {
+	        
+	        public void display() {
+	            System.out.println("Outer Static Value: " + outerStaticValue);
+	        }
+	    }
+	 
+	 static class StaticInnerClass {
+	        
+	        static int innerStaticValue = 200;
+
+	        
+	        public static void displayStatic() {
+	            System.out.println("Static Inner Static Value: " + innerStaticValue);
+	        }
+
+	       
+	        public void display() {
+	            System.out.println("Accessing Static Inner Class Static Value: " + innerStaticValue);
+	        }
+	    }
+	 
+
+
+
   
     
    
@@ -9,18 +37,20 @@ public class Application {
 
     public static void main(String[] args) {
     	
-    	 try {
-             
-             ClassLoader customClassLoader = ClassLoader.getSystemClassLoader();
+    	
+        Application outer = new Application();
+        Application.InnerClass inner = outer.new InnerClass();
+        inner.display();
 
-             
-             Class<?> loadedClass = customClassLoader.loadClass("ibm_project.stringpool.Application");
-             
-            
-             System.out.println("Class loaded explicitly using custom ClassLoader: " + loadedClass.getName());
-         } catch (ClassNotFoundException e) {
-             System.out.println("Class not found: " + e.getMessage());
-         }
+        System.out.println("\nDemonstrating Static Inner Class:");
+       
+        Application.StaticInnerClass.displayStatic();
+
+       
+        Application.StaticInnerClass staticInnerInstance = new Application.StaticInnerClass();
+        staticInnerInstance.display();
+
+    	 
 
         
        
