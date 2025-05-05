@@ -8,8 +8,12 @@ public class Calculator {
 	public int divide(int num1,int num2) {
 		return num1/num2;
 	}
-	public void getConnection() {
-		Thread.sleep(101);
+	
+	public static boolean isEven(int num) {
+		return num%2 ==0;
+	}
+	public void getConnection() throws InterruptedException {
+		Thread.sleep(10);
 		System.out.println("connected.....");
 	}
 

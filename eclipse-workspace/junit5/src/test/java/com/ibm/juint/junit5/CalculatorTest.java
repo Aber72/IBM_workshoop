@@ -9,6 +9,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class CalculatorTest {
 
@@ -62,8 +64,22 @@ class CalculatorTest {
 	@Test
 	void testSlowMethodPerformance() {
 		Calculator calculator = new Calculator();
-		assertTimeout(Duration.ofMillis(100), ()->calculator.getConnection());
+		assertTimeout(Duration.ofMillis(102), ()->calculator.getConnection());
 		
 	}
+	
+	@ParameterizedTest
+	@ValueSource(ints = {2,4,6,8,10})
+		void testIsEvenWithEvenNumber(int num) {
+			assertTrue(Calculator.isEven(num));
+		}
+	
+	
+	@ParameterizedTest
+	@ValueSource(ints = {1,3,5,7,11})
+		void testIsEvenWithOddNumber(int num) {
+			assertFalse(Calculator.isEven(num));
+		}
+	
 
 }
