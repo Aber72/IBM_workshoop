@@ -2,6 +2,8 @@ package com.ibm.juint.junit5;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.Duration;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -31,11 +33,11 @@ class CalculatorTest {
 	}
 
 	@Test
-	void test() {
+	void testsum() {
 		//fail("Not yet implemented");
 		int expected =6;
 		Calculator calculator = new Calculator();
-		int actual =calculator.sum(4,2);
+		int actual = calculator.sum(4,2);
 		assertEquals(expected, actual);
 	}
 	@Test
@@ -54,7 +56,14 @@ class CalculatorTest {
 		Calculator calculator = new Calculator();
 		ArithmeticException exception = assertThrows(ArithmeticException.class,()-> calculator.divide(10,0),
 				"Expected divide()to throw,but it didn't");
-		assertEquals("\by zero", exception.getMessage());
+		assertEquals("/ by zero", exception.getMessage());
 		}
+	
+	@Test
+	void testSlowMethodPerformance() {
+		Calculator calculator = new Calculator();
+		assertTimeout(Duration.ofMillis(100), ()->calculator.getConnection());
+		
+	}
 
 }
