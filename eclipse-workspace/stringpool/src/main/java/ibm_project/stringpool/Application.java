@@ -8,12 +8,12 @@ public class Application {
 
     public static void main(String[] args) {
         
-       
-        ExecutorService executor = Executors.newFixedThreadPool(4);
+        
+        ExecutorService executor = Executors.newCachedThreadPool();
 
-       
+        
         for (int i = 0; i < 10; i++) {
-            
+          
             executor.submit(new Task(i));
         }
 
@@ -33,7 +33,7 @@ class Task implements Runnable {
     public void run() {
         System.out.println("Task " + id + " is being executed by thread " + Thread.currentThread().getName());
         try {
-            Thread.sleep(1000); 
+            Thread.sleep(10); 
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
