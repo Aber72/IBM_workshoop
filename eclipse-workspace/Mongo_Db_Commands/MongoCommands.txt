@@ -1,0 +1,239 @@
+
+test> db
+test
+test> show db
+MongoshInvalidInputError: [COMMON-10001] 'db' is not a valid argument for "show".
+test> show dbs
+admin   40.00 KiB
+config  12.00 KiB
+local   40.00 KiB
+test> use ibmdb
+switched to db ibmdb
+ibmdb> db
+ibmdb
+ibmdb> show dbs
+admin   40.00 KiB
+config  60.00 KiB
+local   40.00 KiB
+ibmdb> db.movie.insert({"name":"Avengers"})
+DeprecationWarning: Collection.insert() is deprecated. Use insertOne, insertMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('6819e9e0ae6b940f7fb5f899') }
+}
+ibmdb> show collection
+MongoshInvalidInputError: [COMMON-10001] 'collection' is not a valid argument for "show".
+ibmdb> show collections
+movie
+ibmdb> db.movie.find()
+[ { _id: ObjectId('6819e9e0ae6b940f7fb5f899'), name: 'Avengers' } ]
+ibmdb> db.movie.insertOne({"name":"Ironman"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6819ea60ae6b940f7fb5f89a')
+}
+ibmdb> db.movie.find()
+[
+  { _id: ObjectId('6819e9e0ae6b940f7fb5f899'), name: 'Avengers' },
+  { _id: ObjectId('6819ea60ae6b940f7fb5f89a'), name: 'Ironman' }
+]
+ibmdb> db.dropDatabase()
+{ ok: 1, dropped: 'ibmdb' }
+ibmdb> show collections
+
+ibmdb> db.createcollection("logs",{
+... capped: true,
+... size:5242880,
+... max:5000
+... })
+TypeError: db.createcollection is not a function
+ibmdb> db.createCollection("logs", { capped: true, size: 5242880, max: 5000 })
+{ ok: 1 }
+ibmdb> show collections
+logs
+ibmdb> db.logs.drop()
+true
+ibmdb> show collections
+
+ibmdb> db.createCollection("users", {
+...   validator: {
+...     $jsonSchema: {
+...       bsonType: "object",
+...       required: ["name", "email"],
+...       properties: {
+...         name: {
+...           bsonType: "string",
+...           description: "must be a string and is required"
+...         },
+...         email: {
+...           bsonType: "string",
+...           pattern: "^.+@.+$",
+...           description: "must be a valid email and is required"
+...         },
+...         age: {
+...           bsonType: "int",
+...           minimum: 18,
+...           description: "must be an integer and at least 18"
+...         }
+...       }
+...     }
+...   }
+... })
+{ ok: 1 }
+ibmdb> db
+ibmdb
+ibmdb> use users
+switched to db users
+users> db
+users
+users> user.insertOne("name":"Isha";"email":"isha@w.com")
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:21)
+
+> 1 | user.insertOne("name":"Isha";"email":"isha@w.com")
+    |                      ^
+  2 |
+
+users> user.insertOne({"name":"Isha";"email":"isha@w.com"})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:29)
+
+> 1 | user.insertOne({"name":"Isha";"email":"isha@w.com"})
+    |                              ^
+  2 |
+
+users> user.insertOne({"name":"Isha","email":"isha@w.com"})
+ReferenceError: user is not defined
+users> db.users.insertOne({"name":"Isha","email":"isha@w.com"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6819eedaae6b940f7fb5f89b')
+}
+users> show collections
+users
+users> db.users.find()
+[
+  {
+    _id: ObjectId('6819eedaae6b940f7fb5f89b'),
+    name: 'Isha',
+    email: 'isha@w.com'
+  }
+]
+users> db.empDetails.insertMany(
+...     [
+...             {
+...                     First_Name: "Anil",
+...                     Last_Name: "K",
+...                     Date_Of_Joining: "2010-09-26",
+...                     e_mail: "Anilk@gmail.com",
+...                     phone: "9000012345"
+...             },
+...             {
+...                     First_Name: "Buvana",
+...                     Last_Name: "V",
+...                     Date_Of_Joining: "2008-02-16",
+...                     e_mail: "buvanav@gmail.com",
+...                     phone: "9000054321"
+...             },
+...             {
+...                     First_Name: "Ananth",
+...                     Last_Name: "V",
+...                     Date_Of_Joining: "2006-02-16",
+...                     e_mail: "Ananthv@gmail.com",
+...                     phone: "9000054321"
+...             }
+...     ]
+... )
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6819f0b2ae6b940f7fb5f89c'),
+    '1': ObjectId('6819f0b2ae6b940f7fb5f89d'),
+    '2': ObjectId('6819f0b2ae6b940f7fb5f89e')
+  }
+}
+users> db.empDetails.find()
+[
+  {
+    _id: ObjectId('6819f0b2ae6b940f7fb5f89c'),
+    First_Name: 'Anil',
+    Last_Name: 'K',
+    Date_Of_Joining: '2010-09-26',
+    e_mail: 'Anilk@gmail.com',
+    phone: '9000012345'
+  },
+  {
+    _id: ObjectId('6819f0b2ae6b940f7fb5f89d'),
+    First_Name: 'Buvana',
+    Last_Name: 'V',
+    Date_Of_Joining: '2008-02-16',
+    e_mail: 'buvanav@gmail.com',
+    phone: '9000054321'
+  },
+  {
+    _id: ObjectId('6819f0b2ae6b940f7fb5f89e'),
+    First_Name: 'Ananth',
+    Last_Name: 'V',
+    Date_Of_Joining: '2006-02-16',
+    e_mail: 'Ananthv@gmail.com',
+    phone: '9000054321'
+  }
+]
+users> db.empDetails.findOne("First_Name":"Ananth")
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:34)
+
+> 1 | db.empDetails.findOne("First_Name":"Ananth")
+    |                                   ^
+  2 |
+
+users> db.empDetails.findOne("First_Name","Ananth")
+MongoInvalidArgumentError: Query filter must be a plain object or ObjectId
+users> db.empDetails.findOne("First_Name":'Ananth')
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:34)
+
+> 1 | db.empDetails.findOne("First_Name":'Ananth')
+    |                                   ^
+  2 |
+
+users> db.empDetails.findOne({"First_Name":'Ananth'})
+{
+  _id: ObjectId('6819f0b2ae6b940f7fb5f89e'),
+  First_Name: 'Ananth',
+  Last_Name: 'V',
+  Date_Of_Joining: '2006-02-16',
+  e_mail: 'Ananthv@gmail.com',
+  phone: '9000054321'
+}
+users> db.empDetails.find({"First_Name":{$in:["Anil","Ananth"]}})
+[
+  {
+    _id: ObjectId('6819f0b2ae6b940f7fb5f89c'),
+    First_Name: 'Anil',
+    Last_Name: 'K',
+    Date_Of_Joining: '2010-09-26',
+    e_mail: 'Anilk@gmail.com',
+    phone: '9000012345'
+  },
+  {
+    _id: ObjectId('6819f0b2ae6b940f7fb5f89e'),
+    First_Name: 'Ananth',
+    Last_Name: 'V',
+    Date_Of_Joining: '2006-02-16',
+    e_mail: 'Ananthv@gmail.com',
+    phone: '9000054321'
+  }
+]
+users> db.empDetails.find({"First_Name":{$nin:["Anil","Ananth"]}})
+[
+  {
+    _id: ObjectId('6819f0b2ae6b940f7fb5f89d'),
+    First_Name: 'Buvana',
+    Last_Name: 'V',
+    Date_Of_Joining: '2008-02-16',
+    e_mail: 'buvanav@gmail.com',
+    phone: '9000054321'
+  }
+]
+users>
