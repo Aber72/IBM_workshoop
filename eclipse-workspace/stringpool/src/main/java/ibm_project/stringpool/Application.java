@@ -1,41 +1,25 @@
 
 package ibm_project.stringpool;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.Locale;
 
 public class Application {
 
     public static void main(String[] args) {
-        
-        
-        ExecutorService executor = Executors.newCachedThreadPool();
+        // Get the default locale
+        Locale locale = Locale.getDefault();
+        System.out.println("Default Locale: " + locale.getDisplayName());
 
-        
-        for (int i = 0; i < 10; i++) {
-          
-            executor.submit(new Task(i));
-        }
+        // Get the locale for a specific country and language
+        Locale frenchLocale = new Locale("fr", "FR");
+        System.out.println("French Locale: " + frenchLocale.getDisplayName());
 
-       
-        executor.shutdown();
-    }
-}
+        // Get the locale for a specific language
+        Locale englishLocale = new Locale("en");
+        System.out.println("English Locale: " + englishLocale.getDisplayName());
 
-class Task implements Runnable {
-    private int id;
-
-    public Task(int id) {
-        this.id = id;
-    }
-
-    @Override
-    public void run() {
-        System.out.println("Task " + id + " is being executed by thread " + Thread.currentThread().getName());
-        try {
-            Thread.sleep(10); 
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
+        // Get the locale for a specific country
+        Locale usaLocale = new Locale("", "US");
+        System.out.println("USA Locale: " + usaLocale.getDisplayName());
     }
 }
