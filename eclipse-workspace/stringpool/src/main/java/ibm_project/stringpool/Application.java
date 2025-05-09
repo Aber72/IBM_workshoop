@@ -1,25 +1,37 @@
 
 package ibm_project.stringpool;
 
-import java.util.Locale;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Application {
 
     public static void main(String[] args) {
-        // Get the default locale
-        Locale locale = Locale.getDefault();
-        System.out.println("Default Locale: " + locale.getDisplayName());
+        // Create a list of strings
+        List<String> stringList = new ArrayList<>();
+        stringList.add("Apple");
+        stringList.add("Banana");
+        stringList.add("Cherry");
 
-        // Get the locale for a specific country and language
-        Locale frenchLocale = new Locale("fr", "FR");
-        System.out.println("French Locale: " + frenchLocale.getDisplayName());
+        // Print the list
+        System.out.println("String List: " + stringList);
 
-        // Get the locale for a specific language
-        Locale englishLocale = new Locale("en");
-        System.out.println("English Locale: " + englishLocale.getDisplayName());
+        // Create a list of integers
+        List<Integer> integerList = new ArrayList<>();
+        integerList.add(1);
+        integerList.add(2);
+        integerList.add(3);
 
-        // Get the locale for a specific country
-        Locale usaLocale = new Locale("", "US");
-        System.out.println("USA Locale: " + usaLocale.getDisplayName());
+        // Print the list
+        System.out.println("Integer List: " + integerList);
+
+        // Create a list of objects
+        List<Object> objectList = new ArrayList<>();
+        objectList.add("Apple");
+        objectList.add(1);
+        objectList.add(true);
+
+        // Print the list
+        System.out.println("Object List: " + objectList);
     }
 }
