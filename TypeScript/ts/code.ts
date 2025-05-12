@@ -1,29 +1,39 @@
-{
-// Tuple type declaration
-let tuple1: [string, number] = ['hello', 42];
 
-// Tuple type declaration with multiple types
-let tuple2: [string, number, boolean] = ['hello', 42, true];
+// Define the interface Employee
+interface Employee {
+  name: string;
+  age: number;
+  department: string;
+  salary: number;
+  calculateSalary(): number;
+}
 
-// Tuple type declaration with array type
-let tuple3: [string, number][] = [['hello', 42], ['world', 24]];
+// Implement the interface Employee by a function
+function createEmployee(name: string, age: number, department: string, salary: number): Employee {
+  return {
+    name,
+    age,
+    department,
+    salary,
+    calculateSalary: () => salary * 1.1,
+  };
+}
 
-// Tuple type declaration with readonly type
-let tuple4: readonly [string, number] = ['hello', 42];
+// Create an employee object using the function
+const employee1 = createEmployee('John Doe', 30, 'Sales', 50000);
+console.log(employee1.name); // John Doe
+console.log(employee1.calculateSalary()); // 55000
 
-// Tuple type declaration with optional type
-let tuple5: [string, number, boolean?] = ['hello', 42];
+// Implement the interface Employee by a class
+class EmployeeClass implements Employee {
+  constructor(public name: string, public age: number, public department: string, public salary: number) {}
 
-// Tuple type declaration with rest type
-let tuple6: [string, ...number[]] = ['hello', 42, 24, 36];
+  calculateSalary(): number {
+    return this.salary * 1.1;
+  }
+}
 
-// Tuple type declaration with tuple type
-let tuple7: [string, number] = ['hello', 42];
-
-console.log(tuple1); // ["hello", 42]
-console.log(tuple2); // ["hello", 42, true]
-console.log(tuple3); // [["hello", 42], ["world", 24]]
-console.log(tuple4); // ["hello", 42]
-console.log(tuple5); // ["hello", 42]
-console.log(tuple6); // ["hello", 42, 24, 36]
-console.log(tuple7);} // ["hello", 42]}
+// Create an employee object using the class
+const employee2 = new EmployeeClass('Jane Doe', 25, 'Marketing', 60000);
+console.log(employee2.name); // Jane Doe
+console.log(employee2.calculateSalary()); // 66000
