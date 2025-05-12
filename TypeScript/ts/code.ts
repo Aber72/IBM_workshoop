@@ -37,3 +37,8 @@ class EmployeeClass implements Employee {
 const employee2 = new EmployeeClass('Jane Doe', 25, 'Marketing', 60000);
 console.log(employee2.name); // Jane Doe
 console.log(employee2.calculateSalary()); // 66000
+
+
+console.log(employee2.department); // undefined
+console.log(employee2?.department); // undefined
+

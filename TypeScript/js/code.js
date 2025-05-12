@@ -29,3 +29,5 @@ var EmployeeClass = /** @class */ (function () {
 var employee2 = new EmployeeClass('Jane Doe', 25, 'Marketing', 60000);
 console.log(employee2.name); // Jane Doe
 console.log(employee2.calculateSalary()); // 66000
+console.log(employee2.department); // undefined
+console.log(employee2 === null || employee2 === void 0 ? void 0 : employee2.department); // undefined
