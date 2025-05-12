@@ -1,4 +1,13 @@
-console.log(a) // undefined (var is hoisted)
- var a=2;
- console.log(b) // refrence error(let\const are )
-  let b=3;
+firstFunction();
+secondFunction();
+let firstName: string | undefined;
+
+firstFuntion(){
+    let firstName:string ="Abhishek";
+    console.log(firstName);
+}
+secondFuntion() {
+    let firstName:string ="Abhi";
+    console.log(firstName);
+}
+console.log(firstName)
