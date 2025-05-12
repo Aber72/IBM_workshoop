@@ -1,11 +1,15 @@
-function execute(operation: (num1:number,num2:number)=>number){
-    console.log(operation(2,4))
+let number: number[] =[2,3,4,5,6]
+number.push(8);
+console.log(number)
 
-}
 
-execute((num1 , num2) =>{
-    return num1+num2;
-})
-execute((num1 , num2) =>{
-    return (num1+num2)/2;
-})
+let fruit:Array<string> =["mango","banana","apple"]
+fruit.push("litchi")
+console.log(fruit)
+
+
+const color : readonly string[] = ['red','yellow','blue']
+console.log(color)
+
+let mixed:(string|number)[] =['cat',67,'mat',65]
+console.log(mixed);

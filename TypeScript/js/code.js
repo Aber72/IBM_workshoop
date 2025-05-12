@@ -1,9 +1,10 @@
-function execute(operation) {
-    console.log(operation(2, 4));
-}
-execute(function (num1, num2) {
-    return num1 + num2;
-});
-execute(function (num1, num2) {
-    return (num1 + num2) / 2;
-});
+var number = [2, 3, 4, 5, 6];
+number.push(8);
+console.log(number);
+var fruit = ["mango", "banana", "apple"];
+fruit.push("litchi");
+console.log(fruit);
+var color = ['red', 'yellow', 'blue'];
+console.log(color);
+var mixed = ['cat', 67, 'mat', 65];
+console.log(mixed);
