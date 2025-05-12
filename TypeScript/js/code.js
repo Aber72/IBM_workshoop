@@ -1,12 +1,9 @@
-function f1() {
-    console.log("this is f1");
+function execute(operation) {
+    console.log(operation(2, 4));
 }
-f1();
-var fe = function () {
-    console.log("this is fe");
-};
-fe();
-var f3 = function () {
-    console.log("this is f3");
-};
-f3();
+execute(function (num1, num2) {
+    return num1 + num2;
+});
+execute(function (num1, num2) {
+    return (num1 + num2) / 2;
+});

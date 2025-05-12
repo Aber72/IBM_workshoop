@@ -1,14 +1,11 @@
-function f1(){
-    console.log("this is f1")
-}
-f1();
-var fe = function(){
-    console.log("this is fe");
+function execute(operation: (num1:number,num2:number)=>number){
+    console.log(operation(2,4))
+
 }
 
-fe();
- var f3 =()=>{
-    console.log("this is f3")
-
- }
- f3();
+execute((num1 , num2) =>{
+    return num1+num2;
+})
+execute((num1 , num2) =>{
+    return (num1+num2)/2;
+})
