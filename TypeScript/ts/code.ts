@@ -1,14 +1,14 @@
-console.info("you r awsm")
-console.log("you r awsm")
-console.log({
-    name:"abd",
-    age:54
-})
-console.log(["orange","apple","pineapple"])
-console.error("something is worng")
-console.table(["orange","apple","mango"])
-console.assert(2>3,"it cannot be")
-// console.clear();
-console.warn("warnong")
-console.time()
-console.timeEnd()
+function f1(){
+    console.log("this is f1")
+}
+f1();
+var fe = function(){
+    console.log("this is fe");
+}
+
+fe();
+ var f3 =()=>{
+    console.log("this is f3")
+
+ }
+ f3();
