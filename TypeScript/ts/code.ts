@@ -1,13 +1,17 @@
-firstFunction();
-secondFunction();
-let firstName: string | undefined;
+const x =10;
+{
+    console.log(x);
+    {
+        const x=23;
+        console.log(x);
+    }
+    
+    {
+       const x=45;
+        console.log(x);
 
-firstFuntion(){
-    let firstName:string ="Abhishek";
-    console.log(firstName);
+    }
+
 }
-secondFuntion() {
-    let firstName:string ="Abhi";
-    console.log(firstName);
-}
-console.log(firstName)
+
+console.log(x);

@@ -1,14 +1,13 @@
-firstFunction();
-secondFunction();
-var firstName;
-firstFuntion();
+var x = 10;
 {
-    var firstName_1 = "Abhishek";
-    console.log(firstName_1);
+    console.log(x);
+    {
+        var x_1 = 23;
+        console.log(x_1);
+    }
+    {
+        var x_2 = 45;
+        console.log(x_2);
+    }
 }
-secondFuntion();
-{
-    var firstName_2 = "Abhi";
-    console.log(firstName_2);
-}
-console.log(firstName);
+console.log(x);
