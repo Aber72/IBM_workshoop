@@ -1,17 +1,8 @@
-const x =10;
-{
-    console.log(x);
-    {
-        const x=23;
-        console.log(x);
-    }
-    
-    {
-       const x=45;
-        console.log(x);
+let userinput: string|null = window.prompt("Please Enter your value")
 
-    }
-
+if(userinput !== null){
+    window.alert(`hello ,${userinput}`)
 }
-
-console.log(x);
+else{
+    window.alert("you not choose any name ")
+}
