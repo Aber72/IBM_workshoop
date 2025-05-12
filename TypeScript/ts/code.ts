@@ -1,8 +1,14 @@
-let userinput: string|null = window.prompt("Please Enter your value")
-
-if(userinput !== null){
-    window.alert(`hello ,${userinput}`)
-}
-else{
-    window.alert("you not choose any name ")
-}
+console.info("you r awsm")
+console.log("you r awsm")
+console.log({
+    name:"abd",
+    age:54
+})
+console.log(["orange","apple","pineapple"])
+console.error("something is worng")
+console.table(["orange","apple","mango"])
+console.assert(2>3,"it cannot be")
+// console.clear();
+console.warn("warnong")
+console.time()
+console.timeEnd()
