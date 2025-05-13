@@ -5,7 +5,7 @@
    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
    
    <bean id ="textEditor" class ="spring.spring_java.TextEditor" scope="singleton">
-   		<constructor-arg ref="spellChecker"></constructor-arg>
+   		<property name="spellChecker" ref="spellChecker"></property>
    </bean>
    <bean id ="spellChecker" class ="spring.spring_java.SpellChecker" scope="singleton">
    		

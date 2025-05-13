@@ -7,7 +7,14 @@ public class TextEditor {
 		this.spellChecker=spellChecker;
 		
 	}
+	public TextEditor() {
+		
+	}
 	
+	public void setSpellChecker(SpellChecker spellChecker) {
+		this.spellChecker = spellChecker;
+	}
+
 	public void spellCheck() {
 		spellChecker.checkSpelling();
 		
