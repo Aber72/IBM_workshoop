@@ -5,10 +5,12 @@
    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
    
    <bean id ="textEditor" class ="spring.spring_java.TextEditor" scope="singleton">
-   		<property name="spellChecker" ref="spellChecker"></property>
-   </bean>
-   <bean id ="spellChecker" class ="spring.spring_java.SpellChecker" scope="singleton">
+   		<property name="spellChecker" >
+   			<bean id ="spellChecker" class ="spring.spring_java.SpellChecker" scope="singleton">
    		
+   			</bean>
+   		</property>
    </bean>
+   
    
 </beans>
