@@ -19,10 +19,15 @@ interface Abuttonprops{
   disabled:boolean;
 
 }
+
+function handler(){
+  alert('Button cliscked')
+}
+
 function Abutton({title,disabled}:Abuttonprops){
   return(
     <>
-      <button disabled={disabled}>{title}</button>
+      <button disabled={disabled} onClick ={handler} >{title}</button>
     </>
   )
 }
@@ -34,7 +39,7 @@ function App() {
        <div>
         <Gretting name="IBMER" city ="BNgalore"/>
         <ExpenseComponent/>
-        <Abutton title='Abutton' disabled = {false} />
+        <Abutton title='Abutton' disabled = {false}  />
        </div>
         
     </>
