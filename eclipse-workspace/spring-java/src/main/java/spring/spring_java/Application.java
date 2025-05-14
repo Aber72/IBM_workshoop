@@ -19,16 +19,16 @@ public class Application
 		
 
 		
-//		TextEditor textEditor = (TextEditor)context.getBean("textEditor");
-//		textEditor.spellCheck();
-//		System.out.println("end");
+		TextEditor textEditor = (TextEditor)context.getBean("textEditor");
+		textEditor.spellCheck();
+		System.out.println("end");
 		
-		JavaCollection jc = (JavaCollection)context.getBean("collection");
-		jc.getAddressList();
-		jc.getAddressMap();
-		jc.getAddressSet();
-		jc.getAddressProp();
-		System.out.println("End");
+//		JavaCollection jc = (JavaCollection)context.getBean("collection");
+//		jc.getAddressList();
+//		jc.getAddressMap();
+//		jc.getAddressSet();
+//		jc.getAddressProp();
+//		System.out.println("End");
 		
 				
 		
