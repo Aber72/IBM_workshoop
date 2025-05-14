@@ -8,6 +8,7 @@ public class Application
 	public static void main( String[] args )
 	{
 		ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+		
 //		Greeting greeting1 = (Greeting)context.getBean("greeting");
 //		System.out.println("hello"+ greeting1.getName());
 //		greeting1.setName("TCSer");
@@ -18,9 +19,18 @@ public class Application
 		
 
 		
-		TextEditor textEditor = (TextEditor)context.getBean("textEditor");
-		textEditor.spellCheck();
-		System.out.println("end");
+//		TextEditor textEditor = (TextEditor)context.getBean("textEditor");
+//		textEditor.spellCheck();
+//		System.out.println("end");
+		
+		JavaCollection jc = (JavaCollection)context.getBean("collection");
+		jc.getAddressList();
+		jc.getAddressMap();
+		jc.getAddressSet();
+		jc.getAddressProp();
+		System.out.println("End");
+		
+				
 		
 	
 	}
