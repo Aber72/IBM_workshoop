@@ -1,13 +1,14 @@
 package spring.spring_java;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Application
 {
 	public static void main( String[] args )
 	{
-		ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+		//ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
 		
 //		Greeting greeting1 = (Greeting)context.getBean("greeting");
 //		System.out.println("hello"+ greeting1.getName());
@@ -19,9 +20,9 @@ public class Application
 		
 
 		
-		TextEditor textEditor = (TextEditor)context.getBean("textEditor");
-		textEditor.spellCheck();
-		System.out.println("end");
+//		TextEditor textEditor = (TextEditor)context.getBean("textEditor");
+//		textEditor.spellCheck();
+//		System.out.println("end");
 		
 //		JavaCollection jc = (JavaCollection)context.getBean("collection");
 //		jc.getAddressList();
@@ -29,6 +30,13 @@ public class Application
 //		jc.getAddressSet();
 //		jc.getAddressProp();
 //		System.out.println("End");
+		
+		 ApplicationContext ctx = 
+		         new AnnotationConfigApplicationContext(BinConfig.class);
+		   
+		      Binw binw = ctx.getBean(Binw.class);
+		      binw.setMessage("Hello World!");
+		      binw.getMessage();
 		
 				
 		
