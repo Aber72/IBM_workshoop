@@ -11,6 +11,6 @@
         <h1>Hello IBMEr</h1>
         <p>This is the aboutPage!</p>
         
-        <a href ="">Home</a>
+       
     </body>
 </html>
