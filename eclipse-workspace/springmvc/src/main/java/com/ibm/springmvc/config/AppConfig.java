@@ -67,7 +67,7 @@ public class AppConfig {
 		vendorAdapter.setDatabase(Database.MYSQL);
 		vendorAdapter.setShowSql(true);
 		vendorAdapter.setGenerateDdl(false);
-		vendorAdapter.setDatabasePlatform("org.hibernate.dialect.MYSQL8Dialect");
+		vendorAdapter.setDatabasePlatform("org.hibernate.dialect.MySQL8Dialect");
 		return vendorAdapter;
 	}
 	
